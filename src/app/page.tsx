@@ -141,7 +141,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="border-t border-slate-900 py-10 text-center text-sm text-slate-600">
-        <p>© {new Date().getFullYear()} NexusAI Template. All rights reserved.</p>
+       <p>© 2026 NexusAI Template. All rights reserved.</p>
       </footer>
 
     </div>
