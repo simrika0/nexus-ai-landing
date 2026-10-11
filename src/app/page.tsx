@@ -1,6 +1,8 @@
 import { ArrowRight, Sparkles, CheckCircle2, Zap, Layers, ShieldCheck } from "lucide-react";
 
 export default function Home() {
+  const CHECKOUT_URL = "https://nexusai.lemonsqueezy.com/checkout/buy/75b9a378-a9a6-4abe-84a5-f4a6550a2cde";
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
       
@@ -19,7 +21,9 @@ export default function Home() {
             <a href="#faq" className="hover:text-white transition">FAQ</a>
           </div>
           <a 
-            href="#pricing" 
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
           >
             Get Started
@@ -46,10 +50,12 @@ export default function Home() {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
-            href="#pricing" 
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2 transition"
           >
-            Start Free Trial <ArrowRight className="w-4 h-4" />
+            Buy Template — $29 <ArrowRight className="w-4 h-4" />
           </a>
           <a 
             href="#features" 
@@ -95,53 +101,42 @@ export default function Home() {
       {/* PRICING SECTION */}
       <section id="pricing" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-3">Simple, Transparent Pricing</h2>
-          <p className="text-slate-400">Choose the plan that fits your growth stage.</p>
+          <h2 className="text-3xl font-bold text-white mb-3">Get Full Source Code</h2>
+          <p className="text-slate-400">One-time purchase. Lifetime access and updates.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {/* Starter Plan */}
-          <div className="p-8 rounded-2xl bg-slate-900/40 border border-slate-800">
-            <h3 className="text-lg font-semibold text-slate-300">Starter</h3>
-            <div className="my-4">
-              <span className="text-4xl font-extrabold text-white">$19</span>
-              <span className="text-slate-500"> / month</span>
-            </div>
-            <ul className="space-y-3 text-sm text-slate-400 mb-8">
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Up to 5 AI Agents</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> 50,000 API Requests</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Community Support</li>
-            </ul>
-            <button className="w-full py-2.5 rounded-lg border border-slate-700 hover:bg-slate-800 font-semibold transition text-sm">
-              Get Started
-            </button>
-          </div>
-
-          {/* Pro Plan */}
+        <div className="max-w-md mx-auto">
+          {/* Main Template License Plan */}
           <div className="p-8 rounded-2xl bg-gradient-to-b from-indigo-950/40 to-slate-900/40 border border-indigo-500/50 relative">
             <span className="absolute -top-3 right-6 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
-              Popular
+              Instant Access
             </span>
-            <h3 className="text-lg font-semibold text-indigo-300">Pro Developer</h3>
+            <h3 className="text-lg font-semibold text-indigo-300">NexusAI Boilerplate</h3>
             <div className="my-4">
-              <span className="text-4xl font-extrabold text-white">$49</span>
-              <span className="text-slate-500"> / month</span>
+              <span className="text-4xl font-extrabold text-white">$29</span>
+              <span className="text-slate-500"> / one-time</span>
             </div>
             <ul className="space-y-3 text-sm text-slate-300 mb-8">
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Unlimited AI Agents</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> 500,000 API Requests</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Priority 24/7 Support</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Full Next.js & Tailwind Source Code</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Clean README Setup Instructions</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Pre-built Responsive UI Components</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Commercial Use Rights</li>
             </ul>
-            <button className="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition text-sm shadow-lg shadow-indigo-600/30">
-              Upgrade to Pro
-            </button>
+            <a 
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition text-sm shadow-lg shadow-indigo-600/30"
+            >
+              Get Instant Access ($29)
+            </a>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-slate-900 py-10 text-center text-sm text-slate-600">
-       <p>© 2026 NexusAI Template. All rights reserved.</p>
+        <p>© 2026 NexusAI Template. All rights reserved.</p>
       </footer>
 
     </div>
