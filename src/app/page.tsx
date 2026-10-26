@@ -1,11 +1,50 @@
+"use client";
+
+import { useEffect } from "react";
+import Script from "next/script";
 import { ArrowRight, Sparkles, CheckCircle2, Zap, Layers, ShieldCheck } from "lucide-react";
 
+declare global {
+  interface Window {
+    Paddle?: any;
+  }
+}
+
 export default function Home() {
-  const CHECKOUT_URL = "https://nexusai.lemonsqueezy.com/checkout/buy/75b9a378-a9a6-4abe-84a5-f4a6550a2cde";
+  const PADDLE_PRICE_ID = "pri_01m5w4vqwa1rr8f87mn2x6nve5"; // Replace with your actual Paddle Price ID
+
+  useEffect(() => {
+    if (window.Paddle) {
+      window.Paddle.Initialize({
+        token: "live_f27610e844a3eff4e7c84dea82a", // Replace with your live client token from Paddle > Developer tools > Authentication
+      });
+    }
+  }, []);
+
+  const handleCheckout = () => {
+    if (window.Paddle) {
+      window.Paddle.Checkout.open({
+        items: [
+          {
+            priceId: PADDLE_PRICE_ID,
+            quantity: 1,
+          },
+        ],
+      });
+    } else {
+      alert("Paddle checkout is still loading. Please try again in a moment.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
       
+      {/* Load Paddle.js Script */}
+      <Script 
+        src="https://cdn.paddle.com/paddle/v2/paddle.js" 
+        strategy="afterInteractive" 
+      />
+
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -20,14 +59,12 @@ export default function Home() {
             <a href="#pricing" className="hover:text-white transition">Pricing</a>
             <a href="#faq" className="hover:text-white transition">FAQ</a>
           </div>
-          <a 
-            href={CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
+          <button 
+            onClick={handleCheckout}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition cursor-pointer"
           >
             Get Started
-          </a>
+          </button>
         </nav>
       </header>
 
@@ -49,17 +86,15 @@ export default function Home() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href={CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2 transition"
+          <button 
+            onClick={handleCheckout}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2 transition cursor-pointer"
           >
             Buy Template — $29 <ArrowRight className="w-4 h-4" />
-          </a>
+          </button>
           <a 
             href="#features" 
-            className="border border-slate-800 hover:bg-slate-900 text-slate-300 px-6 py-3 rounded-xl font-semibold transition"
+            className="border border-slate-800 hover:bg-slate-900 text-slate-300 px-6 py-3 rounded-xl font-semibold transition flex items-center justify-center"
           >
             Explore Features
           </a>
@@ -122,14 +157,12 @@ export default function Home() {
               <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Pre-built Responsive UI Components</li>
               <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400" /> Commercial Use Rights</li>
             </ul>
-            <a 
-              href={CHECKOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition text-sm shadow-lg shadow-indigo-600/30"
+            <button 
+              onClick={handleCheckout}
+              className="block w-full text-center py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition text-sm shadow-lg shadow-indigo-600/30 cursor-pointer"
             >
               Get Instant Access ($29)
-            </a>
+            </button>
           </div>
         </div>
       </section>
